@@ -1,141 +1,116 @@
 #include <iostream>
-
 using namespace std;
 
-class Node
-{
+class Node {
 public:
-  int data;
-  Node *next;
-  Node *prev;
+    int data;
+    Node* next;
+    Node* prev;
 
-  Node(int val)
-  {
-    data = val;
-    next = prev = NULL;
-  }
+    Node(int val) {
+        data = val;
+        next = prev = NULL;
+    }
 };
 
-class DoublyList
-{
-  Node *head;
-  Node *tail;
+class DoublyList {
+    Node* head;
+    Node* tail;
 
 public:
-  DoublyList()
-  {
-    head = tail = NULL;
-  }
-
-  void push_front(int val)
-  {
-    Node *newNode = new Node(val);
-    if (head == NULL)
-    {
-      head = tail = newNode;
-    }
-    else
-    {
-      newNode->next = head;
-      head->prev = newNode;
-      head = newNode;
-    }
-  }
-
-  void push_back(int val)
-  {
-    Node *newNode = new Node(val);
-    if (head == NULL)
-    {
-      head = tail = newNode;
-      return;
+    DoublyList() {
+        head = tail = NULL;
     }
 
-    newNode->prev = tail;
-    tail->next = newNode;
-    tail = newNode;
-  }
-
-  void pop_front()
-  {
-
-    if (head == NULL)
-    {
-      cout << "no list";
-      return;
+    // Insert at front
+    void push_front(int val) {
+        Node* newNode = new Node(val);
+        if (!head) {
+            head = tail = newNode;
+        } else {
+            newNode->next = head;
+            head->prev = newNode;
+            head = newNode;
+        }
     }
 
-    if (head == tail)
-    {
-      delete head;
-      head = tail = NULL;
-      return;
+    // Insert at back
+    void push_back(int val) {
+        Node* newNode = new Node(val);
+        if (!head) {
+            head = tail = newNode;
+            return;
+        }
+        newNode->prev = tail;
+        tail->next = newNode;
+        tail = newNode;
     }
 
-    Node *temp = head;
-    head = head->next;
-    head->prev = NULL;
-    delete temp;
-  }
-
-  void pop_back()
-  {
-    if (head == NULL)
-    {
-      cout << "no list";
-      return;
+    // Remove first element
+    void pop_front() {
+        if (!head) {
+            cout << "List is empty\n";
+            return;
+        }
+        if (head == tail) { // only one node
+            delete head;
+            head = tail = NULL;
+            return;
+        }
+        Node* temp = head;
+        head = head->next;
+        head->prev = NULL;
+        delete temp;
     }
 
-    if (head == tail)
-    {
-      delete head;
-      return;
+    // Remove last element
+    void pop_back() {
+        if (!head) {
+            cout << "List is empty\n";
+            return;
+        }
+        if (head == tail) { // only one node
+            delete head;
+            head = tail = NULL; // ✅ fixed
+            return;
+        }
+        Node* temp = tail;
+        tail = temp->prev;
+        tail->next = NULL;
+        delete temp;
     }
-    Node *temp = tail;
-    tail = temp->prev;
-    tail->next = NULL;
-    delete temp;
-  }
 
-  void display()
-  {
-    Node *temp = head;
-    while (temp != NULL)
-    {
-      cout << temp->data << " <=> ";
-      temp = temp->next;
+    // Display list
+    void display() {
+        Node* temp = head;
+        while (temp) {
+            cout << temp->data << " <=> ";
+            temp = temp->next;
+        }
+        cout << "NULL\n";
     }
-    cout << "NULL" << endl;
-  }
 };
 
-int main()
-{
-  DoublyList ll;
-  ll.push_front(4);
-  ll.push_front(3);
-  ll.push_front(2);
-  ll.push_front(1);
+int main() {
+    DoublyList ll;
+    ll.push_front(4);
+    ll.push_front(3);
+    ll.push_front(2);
+    ll.push_front(1);
+    ll.display();
 
-  ll.display();
+    ll.push_back(5);
+    ll.push_back(6);
+    ll.push_back(7);
+    ll.display();
 
-  ll.push_back(5);
-  ll.push_back(5);
-  ll.push_back(6);
-  ll.push_back(7);
+    ll.pop_front();
+    ll.pop_front();
+    ll.display();
 
-  ll.display();
+    ll.pop_back();
+    ll.pop_back();
+    ll.display();
 
-  ll.pop_front();
-  ll.pop_front();
-
-  ll.display();
-
-  ll.pop_back();
-  ll.pop_back();
-
-  ll.display();
-
-
-  return 0;
+    return 0;
 }
