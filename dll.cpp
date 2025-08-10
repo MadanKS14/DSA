@@ -41,9 +41,12 @@ public:
             head = tail = newNode;
             return;
         }
-        newNode->prev = tail;
-        tail->next = newNode;
-        tail = newNode;
+        tail->next=newNode;
+        newNode->prev=tail;
+        tail=newNode;
+        // newNode->prev = tail;
+        // tail->next = newNode;
+        // tail = newNode;
     }
 
     // Remove first element
