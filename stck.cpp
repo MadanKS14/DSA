@@ -1,62 +1,50 @@
-#include<iostream>
-#include<vector>
+#include <iostream>
+#include <vector>
+#include <list>
 
 using namespace std;
 
-class Stack{
-  public:
+class Stack
+{
+public:
+  list<int> ll;
 
-  vector<int> v;
-  void push(int val){
-    v.push_back(val);
+  void push(int val)
+  {
+    ll.push_front(val);
   }
 
-  int pop(){
-    if(v.empty()){
+  int pop()
+  {
+    if(ll.empty()){
       cout<<"stack is empty";
-      return -1;
-    }
-    else{
-      int topVal=v.back();
-      v.pop_back();
-      return v.back();
     }
     
+    ll.pop_front();
   }
 
-  int  top(){
-    if(v.empty()){
-      cout<<"stack is empty";
-      return -1;
-    }
-    else
-    {
-      return v.back();
-    }
+  int top()
+  {
+    return ll.front();
   }
 
-  bool empty(){
-    return v.empty();
+  bool empty()
+  {
+    return ll.empty();
   }
-
-
 };
 
-int main(){
+int main()
+{
 
   Stack s;
   s.push(10);
   s.push(20);
   s.push(30);
 
-  while(!s.empty()){
-    cout<<s.top()<<" ";
-    // s.pop();
-  }
-
-  s.pop();
-  while(!s.empty()){
-    cout<<s.top()<<" ";
+  while (!s.empty())
+  {
+    cout << s.top() << " ";
     s.pop();
   }
 
