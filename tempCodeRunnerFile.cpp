@@ -1,1 +1,1 @@
-s.pop();
+push_back
