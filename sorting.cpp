@@ -84,11 +84,6 @@
 //   return 0;
 // }
 
-
-
-
-
-
 // #include <iostream>
 // #include <vector>
 // using namespace std;
@@ -132,3 +127,131 @@
 
 //   return 0;
 // }
+
+// #include <iostream>
+// #include <vector>
+// using namespace std;
+
+// void merge(vector<int> &arr, int st, int mid, int end)
+// {
+//   int i = st;
+//   int j = mid + 1;
+//   vector<int> temp;
+//   while (i <= mid && j <= end)
+//   {
+//     if (arr[i] < arr[j])
+//     {
+//       temp.push_back(arr[i]);
+//       i++;
+//     }
+//     else
+//     {
+//       temp.push_back(arr[j]);
+//       j++;
+//     }
+//   }
+
+//   while (i <= mid)
+//   {
+//     temp.push_back(arr[i]);
+//     i++;
+//   }
+//   while (j <= end)
+//   {
+//     temp.push_back(arr[j]);
+//     j++;
+//   }
+
+//   for (int idx = 0; idx < temp.size(); idx++)
+//   {
+//     arr[st + idx] = temp[idx];
+//   }
+// }
+
+// void mergesort(vector<int> &arr, int st, int end)
+// {
+//   if (st < end)
+//   {
+//     int mid = st + (end - st) / 2;
+//     mergesort(arr, st, mid);
+//     mergesort(arr, mid + 1, end);
+//     merge(arr, st, mid, end);
+//   }
+// }
+
+// int main()
+// {
+//   vector<int> arr = {5, 3, 8, 4, 2};
+//   int n = arr.size();
+
+//   cout << "before sorting :" << endl;
+//   for (int i = 0; i < n; i++)
+//   {
+//     cout << arr[i] << " ";
+//   }
+
+//   cout << " " << endl;
+//   mergesort(arr, 0, arr.size() - 1);
+
+//   cout << "after sorting :" << endl;
+//   for (int i = 0; i < n; i++)
+//   {
+//     cout << arr[i] << " ";
+//   }
+
+//   return 0;
+// }
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int partition(vector<int> &arr, int st, int end)
+{
+  int idx = st - 1;
+  int pivot = arr[end];
+  for (int j = st; j < end; j++)
+  {
+    if (arr[j] < pivot)
+    {
+      idx++;
+      swap(arr[j], arr[idx]);
+    }
+  }
+  idx++;
+  swap(arr[end], arr[idx]);
+  return idx;
+}
+
+void quicksort(vector<int> &arr, int st, int end)
+{
+  if (st < end)
+  {
+    int pivIdx = partition(arr, st, end);
+    quicksort(arr, st, pivIdx - 1);
+    quicksort(arr, pivIdx + 1, end);
+  }
+}
+
+int main()
+{
+  vector<int> arr = {5, 2, 6, 4, 1, 3};
+  int n = arr.size();
+
+  cout << "before sorting :" << endl;
+  for (int i = 0; i < n; i++)
+  {
+    cout << arr[i] << " ";
+  }
+
+  cout << " " << endl;
+  quicksort(arr, 0, arr.size() - 1);
+
+  cout << "after sorting :" << endl;
+  for (int i = 0; i < n; i++)
+  {
+    cout << arr[i] << " ";
+  }
+
+  return 0;
+}

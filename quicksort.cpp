@@ -17,7 +17,7 @@ int partition(vector<int> &arr, int st, int end) {
     idx++;
     swap(arr[idx], arr[end]);
 
-    return idx;
+    return idx; 
 }
 
 void qs(vector<int>& arr, int st, int end) {
