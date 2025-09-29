@@ -1,3 +1,5 @@
+//queue implementation using linked list
+
 #include<iostream>
 using namespace std;
 
@@ -64,9 +66,7 @@ int main(){
     q.push(1);
     q.push(2);
     q.push(3);
-
     q.display();
-
     q.pop();
     q.display();
 

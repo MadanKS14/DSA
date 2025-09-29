@@ -1,3 +1,8 @@
+
+
+//stack using linked list
+
+
 #include <iostream>
 #include <vector>
 #include <list>
