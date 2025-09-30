@@ -14,6 +14,7 @@ public:
 };
 
 class Queue{
+
     Node* head;
     Node* tail;
 
@@ -69,8 +70,8 @@ int main(){
     q.display();
     q.pop();
     q.display();
-
-    cout << "Front: " << q.front() << endl;
-
+    
+    cout <<"Front:"<<q.front()<< endl;
+    
     return 0;
 }
