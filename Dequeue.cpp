@@ -17,5 +17,8 @@ int main() {
     }
     cout << endl;
 
+    cout<<q.back();
+
+    q.pop_back();
     return 0;
 }

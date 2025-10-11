@@ -69,12 +69,9 @@ class List{
         temp=temp->next;
       }
       temp->next=NULL;
-
       delete tail;
       tail=temp;
-
     }
-
   }
 
   void insert(int val,int pos){
