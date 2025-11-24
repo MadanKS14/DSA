@@ -55,7 +55,7 @@ public:
             cout << "List is empty\n";
             return;
         }
-        if (head == tail) { // only one node
+        if (head == tail) { 
             delete head;
             head = tail = NULL;
             return;
@@ -72,9 +72,9 @@ public:
             cout << "List is empty\n";
             return;
         }
-        if (head == tail) { // only one node
+        if (head == tail) { 
             delete head;
-            head = tail = NULL; // ✅ fixed
+            head = tail = NULL; 
             return;
         }
         Node* temp = tail;
