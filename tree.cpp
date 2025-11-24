@@ -28,7 +28,6 @@ Node *buildTree(vector<int> &arr)
   Node *root = new Node(arr[idx]);
   root->left = buildTree(arr);
   root->right = buildTree(arr);
-
   return root;
 }
 

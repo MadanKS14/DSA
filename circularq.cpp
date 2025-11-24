@@ -47,16 +47,16 @@ int main() {
     q.push(1);
     q.push(2);
     q.push(3);
-    q.push(4); // Should print "Queue is full"
+    q.push(4);
 
-    cout << q.Front() << endl; // Should print 1
-
-    q.pop();
-    cout << q.Front() << endl; // Should print 2
+    cout << q.Front() << endl;
 
     q.pop();
+    cout << q.Front() << endl;
+
     q.pop();
-    q.pop(); // Should print "Queue is empty"
+    q.pop();
+    q.pop();
 
     return 0;
 }
