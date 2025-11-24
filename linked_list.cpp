@@ -81,7 +81,7 @@ class List{
     }
 
     if(pos == 0){
-      push_back(val);
+      push_front(val);
       return;
     }
 
