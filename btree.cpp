@@ -34,33 +34,33 @@ Node *buildTree(vector<int> &preorder, int &idx)
   return root;
 }
 
-//void preOrder(Node *root)
-// {
-//   if (!root)
-//     return;
-//   cout << root->data << endl;
-//   preOrder(root->left);
-//   preOrder(root->right);
-// }
-// void inOrder(Node *root)
-// {
-//   if (!root)
-//     return;
+void preOrder(Node *root)
+{
+  if (!root)
+    return;
+  cout << root->data << endl;
+  preOrder(root->left);
+  preOrder(root->right);
+}
+void inOrder(Node *root)
+{
+  if (!root)
+    return;
 
-//   inOrder(root->left);
-//   cout << root->data << endl;
-//   inOrder(root->right);
-// }
+  inOrder(root->left);
+  cout << root->data << endl;
+  inOrder(root->right);
+}
 
-// void postOrder(Node *root)
-// {
-//   if (!root)
-//     return;
+void postOrder(Node *root)
+{
+  if (!root)
+    return;
 
-//   postOrder(root->left);
-//   postOrder(root->right);
-//   cout << root->data << endl;
-// }
+  postOrder(root->left);
+  postOrder(root->right);
+  cout << root->data << endl;
+}
 
 void levelOrder(Node* root){
   queue<Node*> q;
@@ -81,6 +81,18 @@ void levelOrder(Node* root){
 
 }
 
+
+int height(Node * root){
+
+  if(root==nullptr) 
+     return 0;
+
+  int leftht= height(root->left);
+  int rightht= height(root->right);
+
+  return max(leftht,rightht)+1;
+}
+
 int main()
 {
   vector<int> preorder = {
@@ -94,10 +106,12 @@ int main()
   cout << "Root: " << root->data << endl;
   cout << "Left Child: " << root->left->data << endl;
   cout << "Right Child: " << root->right->data << endl;
-  // preOrder(root);
-  // inOrder(root);
-  // postOrder(root);
+  preOrder(root);
+  inOrder(root);
+  postOrder(root);
    levelOrder(root);
+
+  cout << "Height = " << height(root) << endl;
 
   return 0;
 }
