@@ -6,7 +6,6 @@ void bubblesort(int a[], int n)
   for (int i = 0; i < n - 1; i++)
   {
     bool isSwap = false;
-
     for (int j = 0; j < n - i - 1; j++)
     {
       if (a[j] > a[j + 1])
@@ -15,7 +14,6 @@ void bubblesort(int a[], int n)
         isSwap = true;
       }
     }
-
     if (!isSwap)
       return;
   }
