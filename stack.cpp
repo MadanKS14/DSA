@@ -1,4 +1,3 @@
-
 // stack using vectors
 
 #include<iostream>
